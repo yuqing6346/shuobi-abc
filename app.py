@@ -5,7 +5,9 @@
 """
 
 import gradio as gr
+import soundfile as sf
 import numpy as np
+import tempfile
 import random
 import json
 import os
@@ -294,12 +296,13 @@ def record_correct(english_text):
 
 
 def generate_speech(text: str, voice: str = "Luna", speed: float = 0.8):
-    """生成语音 - 返回(采样率, 音频数组)元组供Gradio使用"""
+    """生成语音"""
     if not text.strip():
         return None
     audio = tts_model.generate(text.strip(), voice=voice, speed=speed)
-    # Gradio Audio组件接受(sample_rate, numpy_array)元组
-    return (24000, audio)
+    temp_file = tempfile.NamedTemporaryFile(suffix=".wav", delete=False)
+    sf.write(temp_file.name, audio, 24000)
+    return temp_file.name
 
 
 def select_items_for_quiz(grades: list, difficulty: str, count: int):
