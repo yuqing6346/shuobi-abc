@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+dist/
+*.egg-info/
+
+# 用户数据文件 - 不要同步这些文件！
+game_save.json
+game_save.json.backup
+review_list.json
+error_records.json
+
+# 备份文件
+*.backup
+*.bak
+
+# 日志文件
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 打包文件
+英语听写工具_打包/
+英语听写工具_打包.zip
+*.zip
+*.rar
+
+# Windows
+Thumbs.db
+desktop.ini
